@@ -1,6 +1,9 @@
 import unittest
 
-from main import convert_hex_to_base64
+from main import (
+    convert_hex_to_base64,
+    fixed_xor,
+)
 
 
 class TestProblemSetOne(unittest.TestCase):
@@ -17,3 +20,9 @@ class TestProblemSetOne(unittest.TestCase):
     def test_problem_one_fail_int(self):
         with self.assertRaises(TypeError):
             convert_hex_to_base64(42423)
+
+    def test_problem_two(self):
+        self.assertEqual(
+            fixed_xor('1c0111001f010100061a024b53535009181c', '686974207468652062756c6c277320657965'),
+            '7468652061169642064615614277420706126179'
+        )

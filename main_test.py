@@ -26,3 +26,6 @@ class TestProblemSetOne(unittest.TestCase):
             fixed_xor('1c0111001f010100061a024b53535009181c', '686974207468652062756c6c277320657965'),
             '7468652061169642064615614277420706126179'
         )
+    def test_problem_two_fail_length(self):
+        with self.assertRaises(ValueError):
+            fixed_xor('1c', '686974207468652062756c6c277320657965')

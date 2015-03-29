@@ -10,19 +10,15 @@ def convert_hex_to_base64(hex_str):
 
 
 def fixed_xor(s1, s2):
-    #TODO(mvv): make sure strings are of correct type!
-    s1 = [int(c, 16) for c in s1]
-    s2 = [int(c, 16) for c in s2]
-
     if len(s1) != len(s2):
-        raise ValueError("strings are of not same length :(")
+        raise ValueError("srings are not of same length")
 
-    zipped_result = zip(s1, s2)
-
-    return ''.join([
-        #TODO: lol the replacement rule tho
-        str(hex(a ^ b)).replace('0x', '') for a, b in zipped_result
-    ])
+    return ''.join(
+        chr(ord(a) ^ ord(b)) for (a, b) in zip(
+            s1.decode('hex'),
+            s2.decode('hex')
+        )
+    ).encode('hex')
 
 
 if __name__ == '__main__':
